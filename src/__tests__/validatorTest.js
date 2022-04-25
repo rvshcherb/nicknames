@@ -1,12 +1,14 @@
 import Validator from '../Validator';
 
-test('name check', () => {
-  const result = Validator.validateUsername('Vasya');
-  expect(result).toBe('Vasya');
+test.each(
+  ['vasya', 'Vasya', 'vAsya', 'vAsYa', 'vasyA', 'va99sya', 'va-s-99-ya'],
+)('test name: %s', (name) => {
+  const result = Validator.validateUsername(name);
+  expect(result).toBe(name);
 });
 
 test.each(
-  ['_vasya', 'vasya_', 'vasya999', 'vasya-', '99vasya99'],
+  ['_vasya', 'vasya_', 'vasya999', 'vasya-', '99vasya99', 'Яasya', 'VasЯ'],
 )('test incorrect name: %s', (name) => {
   expect(() => Validator.validateUsername(name)).toThrow('Invalid nickname');
 });

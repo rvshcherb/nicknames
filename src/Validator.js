@@ -1,6 +1,6 @@
 export default class Validator {
   static validateUsername(name) {
-    const generalNameCheck = /^[^(0-9)_-][(a-z)-_]+[^(0-9)_-]$/.test(name);
+    const generalNameCheck = /^[^(0-9)(а-яА-Я)_-][a-zA-Z0-9-_]+[^(0-9)(а-яА-Я)_-]$/.test(name);
     const threeNumbersCheck = !/\d{3}/.test(name);
 
     if (generalNameCheck && threeNumbersCheck) {
