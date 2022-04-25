@@ -8,7 +8,7 @@ test.each(
 });
 
 test.each(
-  ['_vasya', 'vasya_', 'vasya999', 'vasya-', '99vasya99', 'Яasya', 'VasЯ'],
+  ['_vasya', 'vasya_', 'vasya999', 'vasya-', '99vasya99', 'Яasya', 'VasЯ', 'åvsya'],
 )('test incorrect name: %s', (name) => {
   expect(() => Validator.validateUsername(name)).toThrow('Invalid nickname');
 });
